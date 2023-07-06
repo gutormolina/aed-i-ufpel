@@ -7,7 +7,6 @@ int main()
 {
     int tam = 10;
     int* vetor = (int *)malloc(tam * sizeof(int));
-    int aux = 0;
     vetor[0] = 1;
     for (int i = 1; i < tam; i++)
     {
@@ -25,7 +24,7 @@ int main()
 
 int* runningSum(int* nums, int numsSize, int* returnSize){
     int result = 0;
-    returnSize = numsSize;
+    *returnSize = numsSize;
 
     for (int i = 0; i < numsSize; i++) 
     {
