@@ -30,12 +30,18 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize)
 int main()
 {
     int tamContas = 2;
-    int **contas = (int **)malloc(tamContas * sizeof(int));
+    int **contas = (int **)malloc(tamContas * sizeof(int*));
     int *colContas = (int *)malloc(sizeof(int));
-    colContas = 3;
-    int con[3][2] = {{1,5},{7,3},{3,5}};
-    contas = &con;
-    printf("%d", maximumWealth(**contas, tamContas, *colContas));
-    free(contas);
-    free(colContas);
+    *colContas = 3;
+    
+    for (int i = 0; i < tamContas; i++)
+    {
+        contas[i] = (int *)malloc(*colContas * sizeof(int));
+        for (int j = 0; j < 3; j++)
+        {
+            contas[i][j] = i + 1;
+        }
+    }
+
+    printf("%d", maximumWealth(contas, tamContas, colContas));
 }
