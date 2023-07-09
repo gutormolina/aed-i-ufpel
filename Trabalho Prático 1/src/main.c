@@ -63,8 +63,8 @@ char *shortestCompletingWord(char *licensePlate, char **words, int wordsSize)
 
 int main()
 {
-    char defWord[] = "1s3 PSt";
-    char *wordArr[4] = {"step","steps","stripe","stepple"};
+    char defWord[] = "2a3 Bd5";
+    char *wordArr[4] = {"art", "abduct", "abide", "blank"};
     int size = 4;
     printf("%s", shortestCompletingWord(defWord, wordArr, size));
 }
