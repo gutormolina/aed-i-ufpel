@@ -3,26 +3,21 @@
 
 int maxProfit(int* prices, int pricesSize)
 {
-    int max = 0, bestBuy = prices[0], bestBuyIndex, bestSell = 0, bestSellIndex;
-    for (int i = 0; i < pricesSize; i++)
-    {
-		if (bestBuy > prices[i])
-		{
-			bestBuy = prices[i];
-			bestBuyIndex = i;
-		}
-    }
+    int maxProfit = 0;
+    int minPrice = prices[0];
     
-	for (int i = bestBuyIndex + 1; i < pricesSize; i++)
-	{
-		if (bestSell < prices[i])
-		{
-			bestSell = prices[i];
-			bestSellIndex = i;
-		}
-	}
+    for (int i = 1; i < pricesSize; i++)
+    {
+        int currentProfit = prices[i] - minPrice;
+        if (currentProfit > maxProfit)
+            maxProfit = currentProfit;
 
-	return max = prices[bestSellIndex] - prices[bestBuyIndex];
+        if (prices[i] < minPrice)
+            minPrice = prices[i];
+    }
+
+    return maxProfit;
+	
 }
 
 int main()
