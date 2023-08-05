@@ -52,7 +52,7 @@ int fillCups(int* amount, int amountSize)
         amount[firstCup]--;
         amount[secondCup]--;
         flag = updateFlag(amount, amountSize);
-        seconds ++;
+        seconds++;
     }
 
     //  Termina de encher o tipo restante
@@ -71,7 +71,7 @@ int fillCups(int* amount, int amountSize)
 
         amount[cup]--;
         flag = updateFlag(amount, amountSize);
-        seconds ++;
+        seconds++;
     }
 
     return seconds;
