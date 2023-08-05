@@ -20,7 +20,6 @@ int fillCups(int* amount, int amountSize)
     int flag = 0;
     flag = updateFlag(amount, amountSize);
 
-    int served = 0;
     int seconds = 0;
     
     //  Enche dois copos
