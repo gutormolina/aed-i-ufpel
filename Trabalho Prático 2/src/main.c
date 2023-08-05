@@ -44,7 +44,7 @@ int fillCups(int* amount, int amountSize)
         //  Encontra o segundo maior índice
         for (int i = 0; i < amountSize; i++)
         {   
-            if (i != firstCup && amount[i] >= amount[secondCup])
+            if (i != firstCup && (secondCup == -1 || (amount[i] >= amount[secondCup] && amount[i] > 0)))
             {
                 secondCup = i;
             }
