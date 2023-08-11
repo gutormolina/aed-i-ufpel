@@ -21,11 +21,9 @@ typedef struct
     Node *last;
 } Queue;
 
-void clear(Queue *queue);
-
-Queue *reset(Queue *queue)
+Queue *reset()
 {
-    queue = (Queue *)malloc(sizeof(Queue));
+    Queue *queue = (Queue *)malloc(sizeof(Queue));
     queue->first = NULL;
     queue->last = NULL;
 
@@ -130,7 +128,7 @@ int main()
     i5.id = 0;
     i5.price = 79.99;
 
-    Queue *queue = reset(queue);
+    Queue *queue = reset();
 
     push(queue, i1);
     push(queue, i2);
