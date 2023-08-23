@@ -44,8 +44,6 @@ void push(Node **root, int num)
     {
         previous->right = newNode;
     }
-
-    
 }
 
 void search(Node *node, int num)
