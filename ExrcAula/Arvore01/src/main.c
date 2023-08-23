@@ -8,120 +8,105 @@ typedef struct Node
     struct Node *right;
 } Node;
 
-Node *create()
+void push(Node **root, int num)
 {
-    Node *head = (Node *)malloc(sizeof(Node));
-    head = NULL;
-    return head;
-}
-
-void push(Node *head, int num)
-{
-    if (head == NULL)
-    {
-        head->num = num;
-        head->left = NULL;
-        head->right = NULL;
-        return;
-    }
-
-    Node *current = head;
+    Node *current = *root;
+    Node *previous = NULL;
     Node *newNode = (Node *)malloc(sizeof(Node));
     newNode->num = num;
     newNode->left = NULL;
     newNode->right = NULL;
 
+    if (current == NULL)
+    {
+        *root = newNode;
+        return;
+    }
+
     while (current != NULL)
     {
+        previous = current;
         if (num < current->num)
         {
-            if (current->left == NULL)
-            {
-                current->left = newNode;
-                return;
-            }
-
             current = current->left;
         }
-        else if (num > current->num)
+        else
         {
-            if (current->right == NULL)
-            {
-                current->right = newNode;
-                return;
-            }
-
             current = current->right;
         }
     }
 
-    current = newNode;
+    if (newNode->num < previous->num)
+    {
+        previous->left = newNode;
+    }
+    else
+    {
+        previous->right = newNode;
+    }
+
+    
 }
 
-void search(Node *head, int num)
+void search(Node *node, int num)
 {
-    if (head == NULL)
+    if (node == NULL)
     {
-        printf("\nEmpty tree!\n");
+        printf("\nNumber isn't present on the tree\n");
         return;
     }
 
-    Node *current = head;
-    if (current->num = num)
+    if (node->num == num)
     {
         printf("\nNumber found!\n");
         return;
     }
 
-    while (current != NULL)
+    if (num < node->num)
     {
-        if (num < current->num)
-        {
-            if (current->left->num == num)
-            {
-                printf("Number found");
-                return;
-            }
-
-            current = current->left;
-        }
-        else if (num > current->num)
-        {
-            if (current->right->num == num)
-            {
-                printf("Number found");
-                return;
-            }
-
-            current = current->right;
-        }
+        return search(node->left, num);
     }
 
-    printf("Number isn't present on the tree");
-    return;
+    if (num > node->num) {
+        return search(node->right, num);
+    }
+}
+
+void clear(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    
+    clear(root->left);
+    clear(root->right);
+    free(root);
 }
 
 int main()
 {
     int num[] = {1, 3, 6, 2, 8, 9, 0, 5, 7};
 
-    Node *head = create();
+    Node *root = NULL;
 
-    push(head, num[0]);
-    push(head, num[1]);
-    push(head, num[2]);
-    push(head, num[3]);
-    push(head, num[4]);
-    push(head, num[5]);
-    push(head, num[6]);
-    push(head, num[7]);
-    push(head, num[8]);
+    push(&root, num[0]);
+    push(&root, num[1]);
+    push(&root, num[2]);
+    push(&root, num[3]);
+    push(&root, num[4]);
+    push(&root, num[5]);
+    push(&root, num[6]);
+    push(&root, num[7]);
+    push(&root, num[8]);
 
-    search(head, 12);
-    search(head, 1);
-    search(head, 9);
-    search(head, 7);
-    search(head, 4);
+    search(root, 12);
+    search(root, 1);
+    search(root, 9);
+    search(root, 7);
+    search(root, 4);
+
+    clear(root);
 
     return 0;
 }
