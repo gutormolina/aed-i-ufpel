@@ -65,21 +65,61 @@ void search(Node *node, int num)
         return search(node->left, num);
     }
 
-    if (num > node->num) {
+    if (num > node->num)
+    {
         return search(node->right, num);
     }
 }
 
 void clear(Node *root)
 {
-    if (root == NULL)
-    {
-        return;
-    }
-    
+    if (root == NULL) return;
+
     clear(root->left);
     clear(root->right);
     free(root);
+}
+
+void preOrder(Node *node)
+{
+    printf(" %d ", node->num);
+
+    if (node->left != NULL)
+    {
+        preOrder(node->left);
+    }
+
+    if (node->right != NULL)
+    {
+        preOrder(node->right);
+    }
+}
+
+void postOrder(Node *node)
+{
+    if (node == NULL) return;
+
+    if (node->left != NULL)
+    {
+        postOrder(node->left);
+    }
+    
+    if (node->right != NULL)
+    {
+        postOrder(node->right);
+    }
+
+    printf(" %d ", node->num);
+}
+
+int isLeaf(Node *node)
+{
+    if (node->left == NULL && node->right == NULL)
+    {
+        return 1;
+    }
+
+    return 0;
 }
 
 int main()
@@ -97,6 +137,14 @@ int main()
     push(&root, num[6]);
     push(&root, num[7]);
     push(&root, num[8]);
+
+    printf("Pre Order:");
+    preOrder(root);
+    printf("\n");
+
+    printf("Post Order:");
+    postOrder(root);
+    printf("\n");
 
     search(root, 12);
     search(root, 1);
