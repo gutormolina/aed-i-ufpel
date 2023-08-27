@@ -109,4 +109,8 @@ int main()
     printf("\n\tTeste 1: %d\n", findSecondMinimumValue(r1));
     printf("\n\tTeste 2: %d\n", findSecondMinimumValue(r2));
     printf("\n\tTeste 3: %d\n", findSecondMinimumValue(r3));
+
+    clear(r1);
+    clear(r2);
+    clear(r3);
 }
