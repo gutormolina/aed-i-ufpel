@@ -19,42 +19,13 @@ bool isLeaf(struct TreeNode *node)
     return false;
 }
 
-void push(struct TreeNode **root, int num)
+struct TreeNode* push(int val)
 {
-    struct TreeNode *current = *root;
-    struct TreeNode *previous = NULL;
     struct TreeNode *newNode = (struct TreeNode *)malloc(sizeof(struct TreeNode));
-    newNode->val = num;
+    newNode->val = val;
     newNode->left = NULL;
     newNode->right = NULL;
-
-    if (current == NULL)
-    {
-        *root = newNode;
-        return;
-    }
-
-    while (current != NULL)
-    {
-        previous = current;
-        if (num <= current->val)
-        {
-            current = current->left;
-        }
-        else
-        {
-            current = current->right;
-        }
-    }
-
-    if (newNode->val <= previous->val && newNode->val != previous->left->val)
-    {
-        previous->left = newNode;
-    }
-    else
-    {
-        previous->right = newNode;
-    }
+    return newNode;
 }
 
 int findSecondMinimumValue(struct TreeNode *root)
@@ -121,16 +92,21 @@ int main()
     struct TreeNode *r2 = NULL;
     struct TreeNode *r3 = NULL;
 
-    push(&r1, 2);
-    push(&r1, 2);
-    push(&r1, 5);
-    push(&r1, 5);
-    push(&r1, 7);
+    r1 = push(2);
+    r1->left = push(2);
+    r1->right = push(5);
+    r1->right->left = push(5);
+    r1->right->right = push(7);
 
-    push(&r2, 2);
-    push(&r2, 2);
-    push(&r2, 2);
+    r2 = push(2);
+    r2->left = push(2);
+    r2->right = push(2);
+
+    r3 = push(5);
+    r3->left = push(8);
+    r3->right = push(5);
 
     printf("\n\tTeste 1: %d\n", findSecondMinimumValue(r1));
     printf("\n\tTeste 2: %d\n", findSecondMinimumValue(r2));
+    printf("\n\tTeste 3: %d\n", findSecondMinimumValue(r3));
 }

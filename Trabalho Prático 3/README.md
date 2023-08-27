@@ -8,13 +8,17 @@
 
 O problema resolvido foi o número 671 do LeetCode, chamado Second Minimum Node In a Binary Tree, que pede o seguinte:
 
+Dada uma árvore binária que não possui nós com números negativos e cada nó possui exatamente dois ou nenhum sub-nó. Retorne o segundo menor valor entre todos os nós da árvore.
+
+Se nenhum segundo menor valor existe, retorne -1.
+
 ## Casos testados com sucesso
 
 | entrada | saída |
 |-|-|
 | [2,2,5,null,null,5,7] | 5 |
 | [2,2,2] | -1 |
-| [5,8,5] | -1 |
+| [5,8,5] | 8 |
 
 ## O que está funcionando
 
