@@ -95,6 +95,23 @@ void preOrder(Node *node)
     }
 }
 
+void inOrder(Node *node)
+{
+    if (node == NULL) return;
+
+    if (node->left != NULL)
+    {
+        inOrder(node->left);
+    }
+
+    printf(" %d ", node->num);
+
+    if (node->right != NULL)
+    {
+        inOrder(node->right);
+    }
+}
+
 void postOrder(Node *node)
 {
     if (node == NULL) return;
@@ -111,6 +128,7 @@ void postOrder(Node *node)
 
     printf(" %d ", node->num);
 }
+
 
 int isLeaf(Node *node)
 {
@@ -140,6 +158,10 @@ int main()
 
     printf("Pre Order:");
     preOrder(root);
+    printf("\n");
+
+    printf("In Order: ");
+    inOrder(root);
     printf("\n");
 
     printf("Post Order:");
