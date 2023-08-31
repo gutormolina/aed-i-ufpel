@@ -82,6 +82,8 @@ void clear(Node *root)
 
 void preOrder(Node *node)
 {
+    if (node == NULL) return;
+
     printf(" %d ", node->num);
 
     if (node->left != NULL)
