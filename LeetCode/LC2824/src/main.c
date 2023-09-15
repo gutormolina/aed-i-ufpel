@@ -1,15 +1,21 @@
-int countPairs(int* nums, int numsSize, int target){
-    int pairCounter = 0;
-    for (int i = 0; i < numsSize - 1; i++)
-    {
-        for (int j = i + 1; j < numsSize; j++)
-        {
-            if ((nums[i] + nums[j]) < target)
-            {
-                pairCounter++;
-            }
-        }
-    }
+#include <stdio.h>
 
-    return pairCounter;
+int* divide(int* nums, int left, int right)
+{
+    
+}
+
+int* quickSort(int* nums, int left, int right) 
+{
+    if (left < right)
+    {
+        int pivot = divide(nums, left, right);
+        quickSort(nums, right, pivot - 1);
+        quickSort(nums, pivot + 1, left);
+    }
+}
+
+int main()
+{
+
 }
